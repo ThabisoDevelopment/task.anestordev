@@ -59,10 +59,10 @@ class TaskController {
             request.body.name,
             request.body.description,
             request.body.end_date,
-            request.user.id,
-            request.params.id
+            request.params.id,
+            request.user.id
         ]
-        const statement = `UPDATE tasks SET name=?, description=?, end_date=? WHERE user_id=? AND id=?`
+        const statement = `UPDATE tasks SET name=?, description=?, end_date=? WHERE id=? AND user_id=?`
         connection.execute(statement, data , (error, results)=> {
             if (error) return response.status(501).send({ message: "Internal Server Error" })
             response.status(200).send({

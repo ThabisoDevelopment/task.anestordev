@@ -23,7 +23,13 @@ router.delete('/tasks/:id', Token.verify, TaskController.destroy)
 router.put('/tasks/completed/:id', Token.verify, TaskController.completed)
 
 // Tast Phases Routes
-router.get('/phases', Token.verify, TaskPhaseController.index)
+router.get('/phases/:task_id', Token.verify, TaskPhaseController.index)
+router.post('/phases/:task_id', Token.verify, TaskPhaseController.create)
+// Routes below use phase ID
+router.get('/phases/show/:id', Token.verify, TaskPhaseController.show)
+router.put('/phases/:id', Token.verify, TaskPhaseController.update)
+router.put('/phases/completed/:id', Token.verify, TaskPhaseController.completed)
+router.delete('/phases/:id', Token.verify, TaskPhaseController.destroy)
 
 // Todos Routes
 router.get('/todos', Token.verify, TodoController.index)
