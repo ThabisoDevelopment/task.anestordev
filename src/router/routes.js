@@ -19,8 +19,8 @@ router.get('/tasks', Token.verify, TaskController.index)
 router.get('/tasks/:id', Token.verify, TaskController.show)
 router.post('/tasks', Token.verify, TaskController.create)
 router.put('/tasks/:id', Token.verify, TaskController.update)
-router.delete('/tasks/:id', Token.verify, TaskController.destroy)
 router.put('/tasks/completed/:id', Token.verify, TaskController.completed)
+router.delete('/tasks/:id', Token.verify, TaskController.destroy)
 
 // Tast Phases Routes
 router.get('/phases/:task_id', Token.verify, TaskPhaseController.index)
@@ -33,5 +33,13 @@ router.delete('/phases/:id', Token.verify, TaskPhaseController.destroy)
 
 // Todos Routes
 router.get('/todos', Token.verify, TodoController.index)
+router.get('/todos/:id', Token.verify, TodoController.show)
+router.post('/todos', Token.verify, TodoController.create)
+router.put('/todos/:id', Token.verify, TodoController.update)
+router.put('/todos/completed/:id', Token.verify, TodoController.completed)
+router.delete('/todos/:id', Token.verify, TodoController.destroy)
+/** Below Routes uses Phase ID */
+// router.get('/todos', Token.verify, TodoController.index)
+router.post('/todos/:phase_id', Token.verify, TodoController.create)
 
 export default router
